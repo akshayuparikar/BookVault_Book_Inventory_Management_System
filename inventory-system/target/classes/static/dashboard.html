@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Inventory Dashboard</title>
+    <link rel="stylesheet" href="css/smart.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Inventory</h2>
+    <a href="#" onclick="showSection('products')">Products</a>
+    <a href="#" onclick="showSection('sales')">Sales</a>
+    <a href="#" onclick="logout()">Logout</a>
+</div>
+
+<div class="main">
+    <div class="topbar">
+        <h2>Dashboard</h2>
+        <input id="search" placeholder="Search products..." onkeyup="filterProducts()">
+    </div>
+
+    <!-- PRODUCTS -->
+    <div id="products" class="section">
+        <h3>Add Product</h3>
+        <div class="form-grid">
+            <input id="pname" placeholder="Name">
+            <input id="price" type="number" placeholder="Price">
+            <input id="stock" type="number" placeholder="Stock">
+            <input id="reorder" type="number" placeholder="Reorder Level">
+        </div>
+        <button onclick="addProduct()">Add Product</button>
+
+        <h3>Inventory</h3>
+        <div class="card-grid" id="cards"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Reorder</th>
+                </tr>
+            </thead>
+            <tbody id="productsTable"></tbody>
+        </table>
+    </div>
+
+    <!-- SALES -->
+    <div id="sales" class="section" style="display:none">
+        <h3>Record Sale</h3>
+        <input id="pid" placeholder="Product ID">
+        <input id="qty" placeholder="Quantity">
+        <button onclick="recordSale()">Submit Sale</button>
+    </div>
+</div>
+
+<script src="js/smart.js"></script>
+<script>
+loadProducts();
+</script>
+
+</body>
+</html>
